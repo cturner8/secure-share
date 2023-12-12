@@ -32,7 +32,7 @@
   // "shutdownAction": "none",
 
   // Uncomment the next line to run commands after the container is created.
-  // "postCreateCommand": "cat /etc/os-release",
+  "postCreateCommand": "dotnet dev-certs https --trust",
 
   // Configure tool-specific properties.
   "customizations": {
@@ -42,11 +42,7 @@
         "Vue.vscode-typescript-vue-plugin",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "ms-dotnettools.csharp",
-        "ms-dotnettools.csdevkit",
-        "ms-dotnettools.vscodeintellicode-csharp",
-        "ms-dotnettools.vscodeintellicode-csharp",
-        "ms-dotnettools.vscode-dotnet-runtime"
+        "ms-dotnettools.csdevkit"
       ]
     }
   }
