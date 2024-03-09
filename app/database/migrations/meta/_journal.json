@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1709988275935,
+      "tag": "0000_tan_cassandra_nova",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1709991935151,
+      "tag": "0001_conscious_slipstream",
+      "breakpoints": true
+    }
+  ]
+}

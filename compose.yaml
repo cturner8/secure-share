@@ -2,16 +2,20 @@ services:
   app:
     image: mcr.microsoft.com/devcontainers/typescript-node:20-bullseye
     environment:
-      DB_HOST: db
-      DB_NAME: secure-share
-      DB_USER: ssa
-      DB_PASSWORD_FILE: /run/secrets/db_password
+      NUXT_DB_HOST: db
+      NUXT_DB_NAME: secure-share
+      NUXT_DB_USER: ssa
+      NUXT_DB_PASSWORD_FILE: /run/secrets/db_password
     networks:
       - internal
     secrets:
       - db_password
     depends_on:
       - db
+    ports:
+      - 3000:3000
+      - 5555:5555
+      # - 7999:7999
 
   db:
     image: postgres:16
@@ -32,6 +36,22 @@ services:
     networks:
       - internal
 
+  admin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_LISTEN_ADDRESS: "0.0.0.0"
+      PGADMIN_LISTEN_PORT: 7999
+      PGADMIN_DEFAULT_PASSWORD_FILE: /run/secrets/pgadmin_password
+      PGADMIN_DEFAULT_EMAIL: pg@pgadmin.org
+    networks:
+      - internal
+    depends_on:
+      - db
+    secrets:
+      - pgadmin_password
+    profiles:
+      - dev
+
 networks:
   internal: {}
 
@@ -41,3 +61,5 @@ volumes:
 secrets:
   db_password:
     file: ./secrets/db_password.txt
+  pgadmin_password:
+    file: ./secrets/pgadmin_password.txt

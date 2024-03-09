@@ -1,28 +1,21 @@
 import { generateRegistrationOptions } from "@simplewebauthn/server";
+import { userRegistration } from "~/database/tables";
 
 type Query = {
-  username: string;
+  email: string;
 };
 
 export default defineEventHandler(async (event) => {
   try {
     const { rpName, rpID } = useRuntimeConfig(event);
-    const { username } = getQuery<Query>(event);
+    const { email } = getQuery<Query>(event);
 
-    //   // (Pseudocode) Retrieve the user from the database
-    // // after they've logged in
-    // const user: UserModel = getUserFromDB(loggedInUserId);
-    // // (Pseudocode) Retrieve any of the user's previously-
-    // // registered authenticators
-    // const userAuthenticators: Authenticator[] = getUserAuthenticators(user);
-
+    const userID = crypto.randomUUID();
     const options = await generateRegistrationOptions({
       rpName,
       rpID,
-      // userID: user.id,
-      // userName: user.username,
-      userID: crypto.randomUUID(),
-      userName: username,
+      userID,
+      userName: email,
       attestationType: "none",
       authenticatorSelection: {
         residentKey: "required",
@@ -30,8 +23,9 @@ export default defineEventHandler(async (event) => {
       },
     });
 
-    // (Pseudocode) Remember the challenge for this user
-    //   setUserCurrentChallenge(user, options.challenge);
+    await db
+      .insert(userRegistration)
+      .values({ id: userID, email, challenge: options.challenge });
 
     return Promise.resolve(options);
   } catch (e) {

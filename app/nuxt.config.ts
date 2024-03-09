@@ -8,5 +8,10 @@ export default defineNuxtConfig({
     rpID: "",
     // The URL at which registrations and authentications should occur
     origin: "",
+    // database
+    dbHost: "",
+    dbName: "",
+    dbUser: "",
+    dbPasswordFile: "",
   },
 });

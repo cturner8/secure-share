@@ -1,0 +1,1 @@
+ALTER TABLE "user_registration" DROP COLUMN IF EXISTS "credential_id";
