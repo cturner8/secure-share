@@ -1,4 +1,4 @@
-namespace SecureShare.WebApp;
+namespace SecureShare.API;
 
 public class WeatherForecast
 {
