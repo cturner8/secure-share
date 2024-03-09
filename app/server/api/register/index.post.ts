@@ -6,7 +6,6 @@ import {
 import { verifyRegistrationResponse } from "@simplewebauthn/server";
 import type { RegistrationResponseJSON } from "@simplewebauthn/types";
 import { eq } from "drizzle-orm";
-import { createHash } from "node:crypto";
 
 type Query = {
   email: string;
@@ -57,14 +56,13 @@ export default defineEventHandler(async (event) => {
     } = registrationInfo;
     const { transports = [] } = body.response;
 
-    const emailHash = createHash("sha256");
-    emailHash.update(userEmail);
+    const emailHash = generateHash(userEmail);
 
     const base64CredentialId = Buffer.from(credentialID).toString("base64");
 
     await db.insert(userProfile).values({
       id: userId,
-      emailHash: emailHash.digest("base64"),
+      emailHash,
       email: {},
     });
     await db.insert(userAuthenticator).values({

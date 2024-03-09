@@ -1,4 +1,4 @@
-import { userRegistration } from "@/database/tables";
+import { userProfile, userRegistration } from "@/database/tables";
 import { generateRegistrationOptions } from "@simplewebauthn/server";
 import { count, eq } from "drizzle-orm";
 
@@ -11,13 +11,17 @@ export default defineEventHandler(async (event) => {
     const { rpName, rpID } = useRuntimeConfig(event);
     const { email } = getQuery<Query>(event);
 
-    const [result] = await db
+    const emailHash = generateHash(email);
+    const [userRegistrationResult] = await db
       .select({ count: count() })
       .from(userRegistration)
       .where(eq(userRegistration.email, email));
+    const [userProfileResult] = await db
+      .select({ count: count() })
+      .from(userProfile)
+      .where(eq(userProfile.emailHash, emailHash));
 
-    // TODO: check if email exists in user profiles table as well
-    if (result.count) {
+    if (userRegistrationResult.count || userProfileResult.count) {
       throw createError({
         statusCode: 400,
         statusMessage: "Email is already in use",
