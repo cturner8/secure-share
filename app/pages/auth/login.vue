@@ -28,10 +28,16 @@ const onSubmit = async () => {
 
       const mn = crypto.generateMnemonicPhrase();
       const seed = await crypto.generateSeed(mn, userHandle);
-      const key = await crypto.generateJwk(seed, userHandle);
+      const key = await crypto.generateCryptoKey(seed);
 
       console.info(mn);
       console.info(key);
+
+      const jwe = await crypto.encrypt(key, email.value);
+      console.info(jwe);
+
+      const plaintext = await crypto.decrypt(key, jwe);
+      console.info(plaintext);
     }
   } catch (error) {
     console.error(error);
