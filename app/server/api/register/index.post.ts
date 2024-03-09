@@ -4,6 +4,7 @@ import {
   userRegistration,
 } from "@/database/tables";
 import { verifyRegistrationResponse } from "@simplewebauthn/server";
+import { isoBase64URL } from "@simplewebauthn/server/helpers";
 import type { RegistrationResponseJSON } from "@simplewebauthn/types";
 import { eq } from "drizzle-orm";
 
@@ -58,8 +59,6 @@ export default defineEventHandler(async (event) => {
 
     const emailHash = generateHash(userEmail);
 
-    const base64CredentialId = Buffer.from(credentialID).toString("base64");
-
     await db.insert(userProfile).values({
       id: userId,
       emailHash,
@@ -67,8 +66,8 @@ export default defineEventHandler(async (event) => {
     });
     await db.insert(userAuthenticator).values({
       userId,
-      credentialId: base64CredentialId,
-      credentialPublicKey,
+      credentialId: isoBase64URL.fromBuffer(credentialID),
+      credentialPublicKey: isoBase64URL.fromBuffer(credentialPublicKey),
       counter,
       credentialDeviceType,
       credentialBackedUp,

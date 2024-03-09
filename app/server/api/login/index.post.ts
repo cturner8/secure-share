@@ -1,5 +1,6 @@
 import { userAuthenticator, userProfile } from "@/database/tables";
 import { verifyAuthenticationResponse } from "@simplewebauthn/server";
+import { isoBase64URL } from "@simplewebauthn/server/helpers";
 import type {
   AuthenticationResponseJSON,
   AuthenticatorDevice,
@@ -21,6 +22,7 @@ export default defineEventHandler(async (event) => {
     const user = await db.query.userProfile.findFirst({
       with: {
         authenticators: {
+          where: eq(userAuthenticator.credentialId, body.id),
           columns: {
             counter: true,
             credentialId: true,
@@ -56,7 +58,10 @@ export default defineEventHandler(async (event) => {
 
     const authenticator: AuthenticatorDevice = {
       ...userAuthenticatorMatch,
-      credentialID: Buffer.from(userAuthenticatorMatch.credentialId, "base64"),
+      credentialID: isoBase64URL.toBuffer(userAuthenticatorMatch.credentialId),
+      credentialPublicKey: isoBase64URL.toBuffer(
+        userAuthenticatorMatch.credentialPublicKey,
+      ),
       transports: userAuthenticatorMatch.transports?.split(
         ",",
       ) as AuthenticatorTransportFuture[],

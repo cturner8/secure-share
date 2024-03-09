@@ -43,6 +43,13 @@
       "when": 1710006097060,
       "tag": "0005_aberrant_lady_mastermind",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1710017285797,
+      "tag": "0006_right_paper_doll",
+      "breakpoints": true
     }
   ]
 }

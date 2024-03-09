@@ -9,7 +9,6 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
-import { bytea } from "../types/bytea";
 import { userProfile } from "./userProfile";
 
 export const userAuthenticator = pgTable(
@@ -20,7 +19,7 @@ export const userAuthenticator = pgTable(
     updatedAt: timestamp("updated_at").defaultNow(),
     userId: uuid("user_id").notNull(),
     credentialId: text("credential_id").notNull(),
-    credentialPublicKey: bytea("credential_public_key").notNull(),
+    credentialPublicKey: text("credential_public_key").notNull(),
     counter: bigint("counter", { mode: "number" }).notNull(),
     credentialDeviceType: varchar("credential_device_type", {
       length: 32,
