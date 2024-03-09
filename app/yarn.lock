@@ -1780,6 +1780,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/node20@npm:^20.1.2":
+  version: 20.1.2
+  resolution: "@tsconfig/node20@npm:20.1.2"
+  checksum: 10c0/e438fa9b93f0e6ea667affbbd3217692bf3f92db1b3dcbfba1dd141a7dbcd647c19ed87ce76871c723bed398759ec4a5590685f3e669b600c9371f143a19e0c1
+  languageName: node
+  linkType: hard
+
+"@tsconfig/nuxt@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@tsconfig/nuxt@npm:2.0.2"
+  checksum: 10c0/f380d18a11d78d60eb143d45d05190e5ffce5054b76118c2f3b0ba490a4b497123a04a0ea05af5acc569cfebc99e7fffddd6605e5e4217cd32effca667e8c4b0
+  languageName: node
+  linkType: hard
+
+"@tsconfig/recommended@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@tsconfig/recommended@npm:1.0.3"
+  checksum: 10c0/2744d2798d52d337a7b0b78f6efa070ecda4e42262e93589d4bed615a55639a84035a8e3b2b020f2396f1f7832294b8c00d7acc78e644418566447ca53df9078
+  languageName: node
+  linkType: hard
+
+"@tsconfig/strictest@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@tsconfig/strictest@npm:2.0.3"
+  checksum: 10c0/a26be4aed831c59b6b362608f34c6f0b2427dc08031176d825e46079090b9e48aa5ff71647b762a9a7009cb898af9b6cd24a195d268e9486fffa93de99de08c6
+  languageName: node
+  linkType: hard
+
 "@tufjs/canonical-json@npm:2.0.0":
   version: 2.0.0
   resolution: "@tufjs/canonical-json@npm:2.0.0"
@@ -5372,6 +5400,11 @@ __metadata:
   dependencies:
     "@simplewebauthn/browser": "npm:^9.0.1"
     "@simplewebauthn/server": "npm:^9.0.3"
+    "@simplewebauthn/types": "npm:^9.0.1"
+    "@tsconfig/node20": "npm:^20.1.2"
+    "@tsconfig/nuxt": "npm:^2.0.2"
+    "@tsconfig/recommended": "npm:^1.0.3"
+    "@tsconfig/strictest": "npm:^2.0.3"
     nuxt: "npm:^3.10.3"
     vue: "npm:^3.4.21"
     vue-router: "npm:^4.3.0"

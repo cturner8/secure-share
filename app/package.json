@@ -16,5 +16,12 @@
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.1.1",
+  "devDependencies": {
+    "@simplewebauthn/types": "^9.0.1",
+    "@tsconfig/node20": "^20.1.2",
+    "@tsconfig/nuxt": "^2.0.2",
+    "@tsconfig/recommended": "^1.0.3",
+    "@tsconfig/strictest": "^2.0.3"
+  }
 }
