@@ -15,6 +15,34 @@
       "when": 1709991935151,
       "tag": "0001_conscious_slipstream",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1710003841946,
+      "tag": "0002_awesome_squadron_supreme",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1710005598915,
+      "tag": "0003_tranquil_lilith",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1710005857710,
+      "tag": "0004_careful_stephen_strange",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1710006097060,
+      "tag": "0005_aberrant_lady_mastermind",
+      "breakpoints": true
     }
   ]
 }

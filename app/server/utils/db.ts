@@ -4,7 +4,6 @@ import pg from "pg";
 
 import * as schema from "@/database/tables";
 
-// const event = useRequestEvent();
 const { dbHost, dbName, dbUser, dbPasswordFile } = useRuntimeConfig();
 const dbPassword = fs.readFileSync(dbPasswordFile, "utf8");
 
