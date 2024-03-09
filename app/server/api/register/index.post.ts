@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
       expectedOrigin: origin,
       expectedRPID: rpID,
     });
-    if (!registrationInfo) {
+    if (!verified || !registrationInfo) {
       throw createError({
         statusCode: 400,
         statusMessage: "Could not verify registration",
