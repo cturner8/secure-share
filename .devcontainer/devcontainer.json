@@ -33,7 +33,11 @@
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
-      "extensions": ["esbenp.prettier-vscode", "Vue.volar"]
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "Vue.volar",
+        "ms-azuretools.vscode-docker"
+      ]
     }
   }
 
