@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS "email_idx" ON "user_registration" ("email");

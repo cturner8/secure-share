@@ -1,0 +1,1 @@
+ALTER TABLE "user_profile" ALTER COLUMN "current_auth_challenge" DROP NOT NULL;

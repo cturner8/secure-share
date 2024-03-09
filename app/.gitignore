@@ -31,3 +31,5 @@ logs
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+*.pem

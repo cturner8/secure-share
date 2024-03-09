@@ -1,4 +1,10 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": [
+    "@tsconfig/recommended/tsconfig.json",
+    "@tsconfig/node20/tsconfig.json",
+    "@tsconfig/nuxt/tsconfig.json",
+    "@tsconfig/strictest/tsconfig.json",
+    "./.nuxt/tsconfig.json"
+  ]
 }
