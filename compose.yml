@@ -1,5 +1,0 @@
-version: "3.8"
-
-services:
-  app:
-    image: mcr.microsoft.com/devcontainers/dotnet:7.0
