@@ -11,7 +11,7 @@
     "migrations:generate": "drizzle-kit generate:pg",
     "db:push": "drizzle-kit push:pg",
     "migrate": "tsx ./database/migrate.ts",
-    "studio": "drizzle-kit studio --port 5555"
+    "studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@simplewebauthn/browser": "^9.0.1",

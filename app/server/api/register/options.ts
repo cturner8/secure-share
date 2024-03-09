@@ -1,5 +1,5 @@
+import { userRegistration } from "@/database/tables";
 import { generateRegistrationOptions } from "@simplewebauthn/server";
-import { userRegistration } from "~/database/tables";
 
 type Query = {
   email: string;

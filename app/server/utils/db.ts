@@ -1,15 +1,14 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import fs from "node:fs";
-import { useRequestEvent } from "nuxt/app";
-import { Client } from "pg";
+import pg from "pg";
 
-import * as schema from "~/database/tables";
+import * as schema from "@/database/tables";
 
-const event = useRequestEvent();
-const { dbHost, dbName, dbUser, dbPasswordFile } = useRuntimeConfig(event);
+// const event = useRequestEvent();
+const { dbHost, dbName, dbUser, dbPasswordFile } = useRuntimeConfig();
 const dbPassword = fs.readFileSync(dbPasswordFile, "utf8");
 
-const client = new Client({
+const pool = new pg.Pool({
   host: dbHost,
   port: 5432,
   user: dbUser,
@@ -17,6 +16,4 @@ const client = new Client({
   database: dbName,
 });
 
-await client.connect();
-
-export const db = drizzle(client, { schema });
+export const db = drizzle(pool, { schema });
