@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { startAuthentication } from "@simplewebauthn/browser";
+import crypto from "../../utils/crypto";
 
 const email = ref("");
 
@@ -12,7 +13,7 @@ const onSubmit = async () => {
     });
 
     const authenticationResponse = await startAuthentication(options);
-    const verifyResponse = await $fetch("/api/login", {
+    const verified = await $fetch("/api/login", {
       method: "POST",
       body: authenticationResponse,
       query: {
@@ -20,7 +21,18 @@ const onSubmit = async () => {
       },
     });
 
-    console.info(verifyResponse);
+    if (verified) {
+      const {
+        response: { userHandle },
+      } = authenticationResponse;
+
+      const mn = crypto.generateMnemonicPhrase();
+      const seed = await crypto.generateSeed(mn, userHandle);
+      const key = await crypto.generateJwk(seed, userHandle);
+
+      console.info(mn);
+      console.info(key);
+    }
   } catch (error) {
     console.error(error);
   }

@@ -14,7 +14,7 @@ const onSubmit = async () => {
     });
 
     const registrationResponse = await startRegistration(options);
-    const verifyResponse = await $fetch("/api/register", {
+    const verified = await $fetch("/api/register", {
       method: "POST",
       body: registrationResponse,
       query: {
@@ -22,7 +22,7 @@ const onSubmit = async () => {
       },
     });
 
-    console.info(verifyResponse);
+    console.info(verified);
   } catch (error) {
     console.error(error);
   }

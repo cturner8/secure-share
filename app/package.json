@@ -14,9 +14,11 @@
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@scure/bip39": "^1.2.2",
     "@simplewebauthn/browser": "^9.0.1",
     "@simplewebauthn/server": "^9.0.3",
     "drizzle-orm": "^0.30.1",
+    "jose": "^5.2.3",
     "nuxt": "^3.10.3",
     "pg": "^8.11.3",
     "vue": "^3.4.21",
